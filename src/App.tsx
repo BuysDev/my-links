@@ -1,30 +1,41 @@
 import Me from './assets/me.jpg'
+interface NavigateProps {
+  text: 'LINKEDIN' | 'GITHUB' | 'INSTAGRAM';
+}
 function App() {
 
+  function navigateTo(text: NavigateProps['text']) {
+    if (text === 'LINKEDIN') {
+      return window.open('https://linkedin.com/in/buysdev', '_blank');
+    }
+
+    if (text === 'GITHUB') {
+      return window.open('https://github.com/buysdev', '_blank')
+    }
+
+    if (text === 'INSTAGRAM') {
+      return window.open('https://instagram.com/buysdev__', '_blank')
+    }
+  }
+
   return (
-    <div className="bg-gray-950 h-screen flex items-center justify-center">
-      <div className="flex items-center w-100 justify-center flex-col bg-white gap-6 p-6 rounded-md">
-        <img src={Me} className='rounded-full h-[300px] w-[300px]' alt="" />
-        <div className='text-center'>
-          <h1 className='text-3xl font-bold'>Guilherme Buys</h1>
-          <h2 className='text-xl'>Full Stack Developer</h2>
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-950">
+      <div className='rounded-lg bg-white p-10 shadow-lg flex flex-col items-center gap-4'>
+        <div className='flex flex-col items-center'>
+          <img src={Me} alt="Myself" className="rounded-full w-32 h-32 mb-4" />
+          <h1 className="text-2xl font-bold text-gray-800">Guilherme Buys</h1>
+          <p className="text-gray-600">FullStack Developer</p>
         </div>
-        <div className='w-full h-full flex items-center justify-center flex-col gap-4 font-bold text-white'>
-          <a target='_blank' className='pointer w-[96%] rounded-md bg-indigo-500 p-2' href="https://github.com/BuysDev">
-            <button className='w-full'>
-              GitHub
-            </button>
-          </a>
-          <a target='_blank' className='pointer w-[96%] p-2 rounded-md bg-indigo-500' href="">
-            <button className='w-full'>
-              LinkedIn
-            </button>
-          </a>
-          <a target='_blank' className='pointer w-[96%] p-2 rounded-md bg-indigo-500' href="https://www.instagram.com/buysdev__/">
-            <button className='w-full'>
-              Instagram
-            </button>
-          </a>
+        <div className='flex flex-col items-center mt-4 w-full gap-4'>
+          <button className='w-full mb-2 bg-blue-500 font-bold text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer' onClick={() => navigateTo('INSTAGRAM')}>
+            Instagram
+          </button>
+          <button className='w-full mb-2 bg-blue-500 font-bold text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer' onClick={() => navigateTo('GITHUB')}>
+            GitHub
+          </button>
+          <button className='w-full mb-2 bg-blue-500 font-bold text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer' onClick={() => navigateTo('LINKEDIN')}>
+            LinkedIn
+          </button>
         </div>
       </div>
     </div>
